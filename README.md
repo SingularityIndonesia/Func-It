@@ -18,7 +18,7 @@ dependencies {
 
 ## Features
 ### 1. Alters
-The alters are bunch of infix function that can operate with values within a standard wrapper, such: Options, Either etc.
+The alters are bunch of infix function that can operate with the value within a standard wrapper, such: Options, Either etc.
 Ex:
 ```kotlin
 val a = none<Int()
