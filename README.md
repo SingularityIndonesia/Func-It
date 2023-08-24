@@ -37,16 +37,16 @@ val b = a + 2 + 3 + 4
 Working with monad of list is always awful, so i represent monad's list alters with ``altMap``. Ex:
 ```kotlin
 
-fun stepOne(inp: Int): String {
+val stepOne: (Int) -> String = { inp ->
   return "$inp step1"
 }
 
-fun stepTwo(inp: String): String {
+val stepTwo: (String) -> String = { inp ->
   return "$inp step2"
 }
 
 val a = (1,2,3).toList().some()
-val b = a altMap ::stepOne altMap ::stepTwo // return Some<List<String>> of ["1 step1 step2", "2 step1 step2", .. ]
+val b = a altMap stepOne altMap stepTwo // return Some<List<String>> of ["1 step1 step2", "2 step1 step2", .. ]
 ```
 
 We also have ``altFlatMap`` and many more comming.
@@ -54,19 +54,20 @@ We also have ``altFlatMap`` and many more comming.
 ### 2. Transformers
 The purpose of transformers is to transform one object to another. Ex:
 ```kotlin
-fun stringToInt(inp: String): Option<Int> =
-    runCatching { 
+val stringToInt:(String) -> Option<Int> = { inp ->
+    return runCatching { 
         inp.toInt()
             .some()
     }.getOrElse { 
         none()
     }
+}
 
 val a = "some string"
-val b = a let ::stringToInt // result is none
+val b = a let stringToInt // result is none
 
 // easy chain transformation
-val c = a let ::stepOne let ::stepTwo let ::stepThree let ...
+val c = a let stepOne let stepTwo let stepThree let ...
 ```
 
 # Many More Coming
