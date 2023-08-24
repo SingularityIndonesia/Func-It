@@ -21,7 +21,7 @@ dependencies {
 The alters are bunch of infix functions that can operate with the value within a standard wrapper, such: Options, Either etc.
 Ex:
 ```kotlin
-val a = none<Int()
+val a = none<Int>()
 // these operations (in b) are lazy, means that these operations won't be executed, unless the input is type of Some
 val b = a + 1 + 2 + 3
 
