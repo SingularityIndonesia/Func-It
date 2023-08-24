@@ -34,7 +34,7 @@ val a: Either<ErrorMessage,Int> = 1.right()
 val b = a + 2 + 3 + 4
 ```
 
-Working with monad of list is always awful, so i represent monad's list alters wit ``altMap``. Ex:
+Working with monad of list is always awful, so i represent monad's list alters with ``altMap``. Ex:
 ```kotlin
 
 fun stepOne(inp: Int): String {
