@@ -1,4 +1,5 @@
 import arrow.core.Either
+import arrow.core.flatMap
 
 /**
  * Created by: stefanus
@@ -60,4 +61,17 @@ infix operator fun Either<*, Double>.times(friend: Double): Either<*, Double> {
 
 infix operator fun Either<*, Double>.div(friend: Double): Either<*, Double> {
     return this.map { it / friend }
+}
+
+/** # Transformers **/
+infix fun <A, B, X> Either<X, A>.map(transformer: (A) -> B): Either<X, B> {
+    return this.map(transformer)
+}
+
+infix fun <A, X, Y> Either<X, A>.mapLeft(transformer: (X) -> Y): Either<Y, A> {
+    return this.mapLeft(transformer)
+}
+
+infix fun <A, B, C> Either<A, B>.flatMap(transformer: (right: B) -> Either<A, C>): Either<A, C> {
+    return this.flatMap(transformer)
 }

@@ -1,4 +1,5 @@
 import arrow.core.Option
+import arrow.core.getOrElse
 
 /**
  * Created by: stefanus
@@ -60,4 +61,17 @@ infix operator fun Option<Double>.times(friend: Double): Option<Double> {
 
 infix operator fun Option<Double>.div(friend: Double): Option<Double> {
     return this.map { it / friend }
+}
+
+/** # Transformers **/
+infix fun <A, B> Option<A>.map(transformer: (A) -> B): Option<B> {
+    return this.map(transformer)
+}
+
+infix fun <A, B> Option<A>.flatMap(transformer: (some: A) -> Option<B>): Option<B> {
+    return this.flatMap(transformer)
+}
+
+infix fun <A> Option<A>.getOrElse(some: A) : A {
+    return this.getOrElse { some }
 }
