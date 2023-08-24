@@ -1,0 +1,4 @@
+jdk:
+  - openjdk17
+install:
+  - ./gradlew clean -Pgroup=com.github.DetachHead -Pversion=692c478017 -xcheck build publishToMavenLocal
