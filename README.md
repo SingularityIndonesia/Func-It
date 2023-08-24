@@ -4,7 +4,7 @@ This library uses awesome [Kotlin Arrow](https://arrow-kt.io/) as its base funct
 This library is multiplatform purposes.
 
 It works with standard library such scope functions, standard monads, etc. Basicaly i just make it easier to use.
-This library won't adding any new things to learn, just a basic tings with extra and easier accessibilities.
+This library won't add any new things to learn, just basic things with extra and easier accessibilities.
 
 ## Implementation
 ```groovy
