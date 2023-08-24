@@ -49,4 +49,4 @@ val c = a let ::stepOne let ::stepTwo let ::stepThree let ...
 ```
 
 # Many More Coming
-If you have some cool idea that I could make it true, please tell me, I would love to.
+If you have some cool idea that I could put in it, please tell me, I would love to.
