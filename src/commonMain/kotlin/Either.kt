@@ -63,6 +63,17 @@ infix operator fun Either<*, Double>.div(friend: Double): Either<*, Double> {
     return this.map { it / friend }
 }
 
+/** # List **/
+/**
+ * The alt map, operates directly with the item inside the list, inside the monad.
+ * It transforms your Monad<List<A>> into Monad<List<B>>.
+ */
+infix fun <A, B, X> Either<X, List<A>>.altMap(transformer: (A) -> B): Either<X, List<B>> {
+    return this.map {
+        it.map(transformer)
+    }
+}
+
 /** # Transformers **/
 infix fun <A, B, X> Either<X, A>.map(transformer: (A) -> B): Either<X, B> {
     return this.map(transformer)

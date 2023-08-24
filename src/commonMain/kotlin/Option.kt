@@ -1,3 +1,4 @@
+import arrow.core.Either
 import arrow.core.Option
 import arrow.core.getOrElse
 
@@ -63,6 +64,18 @@ infix operator fun Option<Double>.div(friend: Double): Option<Double> {
     return this.map { it / friend }
 }
 
+/** # List **/
+
+/**
+ * The alt map, operates directly with the item inside the list, inside the monad.
+ * It transforms your Monad<List<A>> into Monad<List<B>>.
+ */
+infix fun <A, B> Option<List<A>>.altMap(transformer: (A) -> B): Option<List<B>> {
+    return this.map {
+        it.map(transformer)
+    }
+}
+
 /** # Transformers **/
 infix fun <A, B> Option<A>.map(transformer: (A) -> B): Option<B> {
     return this.map(transformer)
@@ -72,6 +85,6 @@ infix fun <A, B> Option<A>.flatMap(transformer: (some: A) -> Option<B>): Option<
     return this.flatMap(transformer)
 }
 
-infix fun <A> Option<A>.getOrElse(some: A) : A {
+infix fun <A> Option<A>.getOrElse(some: A): A {
     return this.getOrElse { some }
 }
