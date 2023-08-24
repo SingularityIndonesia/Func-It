@@ -34,6 +34,23 @@ val a: Either<ErrorMessage,Int> = 1.right()
 val b = a + 2 + 3 + 4
 ```
 
+Working with monad of list is always awful, so i represent monad's list alters wit ``altMap``. Ex:
+```kotlin
+
+fun stepOne(inp: Int): String {
+  return "$inp step1"
+}
+
+fun stepTwo(inp: String): String {
+  return "$inp step2"
+}
+
+val a = (1,2,3).toList().some()
+val b = a altMap ::stepOne altMap ::stepTwo // return Some<List<String>> of ["1 step1 step2", "2 step1 step2", .. ]
+```
+
+We also have ``altFlatMap`` and many more comming.
+
 ### 2. Transformers
 The purpose of transformers is to transform one object to another. Ex:
 ```kotlin
