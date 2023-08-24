@@ -31,7 +31,7 @@ val b = a + 2 + 3 + 4
 ```
 
 ### 2. Transformers
-The transform purpose is to transform one object to another. Ex:
+The purpose of transformers is to transform one object to another. Ex:
 ```kotlin
 fun stringToInt(inp: String): Option<Int> =
     runCatching { 
