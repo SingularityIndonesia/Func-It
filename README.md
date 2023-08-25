@@ -79,10 +79,11 @@ val a = (1..5).toList().some()
 val b = a + 6 // result = Some([1,2,3,4,5,6])
 
 val c = a[0] // result = Some(1)
+val d = a[10] // result = None
 ```
 
 ### 4. Extra standard monad
-I Introduce the ``Result<A>`` monad as type alas for ``Either<String,A>``
+I Introduce the ``Result<A>`` monad as type alias for ``Either<String,A>``
 
 # Many More Coming
 If you have some cool idea that I could put in it, please tell me, I would love to.
