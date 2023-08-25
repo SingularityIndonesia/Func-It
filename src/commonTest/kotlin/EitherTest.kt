@@ -13,14 +13,16 @@ class EitherTest {
 
     @Test
     fun test_map_true() {
-        fun step1(inp: Int): String =
+        val step1: (Int) -> String = { inp ->
             "$inp step1"
+        }
 
-        fun step2(inp: Any): String =
+        val step2: (Any) -> String = { inp ->
             "$inp step2"
+        }
 
         val a: Either<String, Int> = 1.right()
-        val b = a map ::step1 map ::step2
+        val b = a map step1 map step2
 
         assertTrue {
             b is Either.Right
