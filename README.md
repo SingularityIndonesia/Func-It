@@ -3,8 +3,9 @@ Collections of utils to support your functional programming kotlin.
 This library uses awesome [Kotlin Arrow](https://arrow-kt.io/) as its base functional proramming library.
 This library is multiplatform purposes.
 
-It works with standard library such scope functions, standard monads, etc. Basicaly i just make it easier to use.
+It works with standard library such scope functions, standard monads, etc.
 This library won't add any new things to learn, just basic things with extra and easier accessibilities.
+Ex: infix functions, alters, transformers.
 
 ## Implementation
 ```groovy
@@ -68,6 +69,20 @@ val b = a let stringToInt // result is none
 // easy chain transformation
 val c = a let stepOne let stepTwo let stepThree let ...
 ```
+
+### 3. Infix
+Many useful infix functions in it. Ex:
+
+You can alter list inside monad. You can do many things, such appending to list, get elem index. etx.
+```kotlin
+val a = (1..5).toList().some()
+val b = a + 6 // result = Some([1,2,3,4,5,6])
+
+val c = a[0] // result = Some(1)
+```
+
+### 4. Extra standard monad
+I Introduce the ``Result<A>`` monad as type alas for ``Either<String,A>``
 
 # Many More Coming
 If you have some cool idea that I could put in it, please tell me, I would love to.
