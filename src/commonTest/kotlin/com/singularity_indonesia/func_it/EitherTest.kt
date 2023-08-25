@@ -1,5 +1,8 @@
+package com.singularity_indonesia.func_it
+
 import arrow.core.Either
 import arrow.core.right
+import com.singularity_indonesia.func_it.map
 import org.junit.jupiter.api.Test
 import kotlin.test.assertTrue
 

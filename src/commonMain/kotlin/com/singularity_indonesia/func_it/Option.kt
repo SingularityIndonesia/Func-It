@@ -1,3 +1,5 @@
+package com.singularity_indonesia.func_it
+
 import arrow.core.*
 import arrow.core.getOrElse
 

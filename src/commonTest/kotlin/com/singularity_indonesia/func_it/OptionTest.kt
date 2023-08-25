@@ -1,4 +1,5 @@
-import arrow.core.None
+package com.singularity_indonesia.func_it
+
 import arrow.core.Some
 import arrow.core.none
 import arrow.core.some
