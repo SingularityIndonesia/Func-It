@@ -73,7 +73,7 @@ val c = a let stepOne let stepTwo let stepThree let ...
 ### 3. Infix
 Many useful infix functions in it. Ex:
 
-You can alter list inside monad. You can do many things, such appending to list, get elem index. etx.
+You can alter list inside monad. You can do many things, such appending to list, get elem index. etc.
 ```kotlin
 val a = (1..5).toList().some()
 val b = a + 6 // result = Some([1,2,3,4,5,6])
