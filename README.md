@@ -49,7 +49,6 @@ val a = (1,2,3).toList().some()
 val b = a altMap stepOne altMap stepTwo // return Some<List<String>> of ["1 step1 step2", "2 step1 step2", .. ]
 ```
 
-We also have ``altFlatMap`` and many more comming.
 
 ### 2. Transformers
 The purpose of transformers is to transform one object to another. Ex:
