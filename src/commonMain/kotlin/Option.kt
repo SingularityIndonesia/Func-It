@@ -76,6 +76,18 @@ infix fun <A, B> Option<List<A>>.altMap(transformer: (A) -> B): Option<List<B>> 
     }
 }
 
+infix operator fun <A> Option<List<A>>.plus(friend: A): Option<List<A>> {
+    return this.map {
+        it.plus(friend)
+    }
+}
+
+infix operator fun <A> Option<List<A>>.plus(friends: List<A>): Option<List<A>> {
+    return this.map {
+        it.plus(friends)
+    }
+}
+
 /** # Transformers **/
 infix fun <A, B> Option<A>.map(transformer: (A) -> B): Option<B> {
     return this.map(transformer)

@@ -74,6 +74,18 @@ infix fun <A, B, X> Either<X, List<A>>.altMap(transformer: (A) -> B): Either<X, 
     }
 }
 
+infix operator fun <A, X> Either<X, List<A>>.plus(friend: A): Either<X, List<A>> {
+    return this.map {
+        it.plus(friend)
+    }
+}
+
+infix operator fun <A, X> Either<X, List<A>>.plus(friends: List<A>): Either<X, List<A>> {
+    return this.map {
+        it.plus(friends)
+    }
+}
+
 /** # Transformers **/
 infix fun <A, B, X> Either<X, A>.map(transformer: (A) -> B): Either<X, B> {
     return this.map(transformer)
