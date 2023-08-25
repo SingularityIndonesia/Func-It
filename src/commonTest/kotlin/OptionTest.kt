@@ -29,4 +29,14 @@ class OptionTest {
         assertTrue { b.getOrNull() == 18 }
 
     }
+
+    @Test
+    fun test_list_add_true() {
+        val a = (1..5).toList().some()
+        val b = a + 6
+
+        assertTrue {
+            b.getOrNull()?.get(5) == 6
+        }
+    }
 }

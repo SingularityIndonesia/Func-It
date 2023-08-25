@@ -1,4 +1,4 @@
-import arrow.core.Either
+import arrow.core.*
 import arrow.core.flatMap
 
 /**

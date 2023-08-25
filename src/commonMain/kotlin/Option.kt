@@ -1,5 +1,4 @@
-import arrow.core.Either
-import arrow.core.Option
+import arrow.core.*
 import arrow.core.getOrElse
 
 /**
@@ -79,6 +78,16 @@ infix fun <A, B> Option<List<A>>.altMap(transformer: (A) -> B): Option<List<B>> 
 infix operator fun <A> Option<List<A>>.plus(friend: A): Option<List<A>> {
     return this.map {
         it.plus(friend)
+    }
+}
+
+infix operator fun <A> Option<List<A>>.get(index: Int): Option<A> {
+    return this.flatMap {
+        runCatching {
+            it[index].some()
+        }.getOrElse {
+            none()
+        }
     }
 }
 
