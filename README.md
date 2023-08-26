@@ -139,10 +139,6 @@ val d = a[10] // result = None
 
 </details>
 
-### 5. Extra standard monad
-
-I Introduce the ``Result<A>`` monad as type alias for ``Either<String,A>``
-
 # Many More Coming
 
 If you have some cool idea that I could put in it, please tell me, I would love to.
