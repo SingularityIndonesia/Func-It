@@ -9,63 +9,8 @@ import arrow.core.flatMap
  * Design by: stefanus.ayudha@gmail.com
  */
 
-/** Alter Value **/
-/** # Int **/
-infix operator fun Either<*, Int>.plus(friend: Int): Either<*, Int> {
-    return this.map { it + friend }
-}
-
-infix operator fun Either<*, Int>.minus(friend: Int): Either<*, Int> {
-    return this.map { it - friend }
-}
-
-infix operator fun Either<*, Int>.times(friend: Int): Either<*, Int> {
-    return this.map { it * friend }
-}
-
-infix operator fun Either<*, Int>.div(friend: Int): Either<*, Int> {
-    return this.map { it / friend }
-}
-
-infix operator fun Either<*, Int>.rem(friend: Int): Either<*, Int> {
-    return this.map { it % friend }
-}
-
-/** # Float **/
-infix operator fun Either<*, Float>.plus(friend: Float): Either<*, Float> {
-    return this.map { it + friend }
-}
-
-infix operator fun Either<*, Float>.minus(friend: Float): Either<*, Float> {
-    return this.map { it - friend }
-}
-
-infix operator fun Either<*, Float>.times(friend: Float): Either<*, Float> {
-    return this.map { it * friend }
-}
-
-infix operator fun Either<*, Float>.div(friend: Float): Either<*, Float> {
-    return this.map { it / friend }
-}
-
-/** # Double **/
-infix operator fun Either<*, Double>.plus(friend: Double): Either<*, Double> {
-    return this.map { it + friend }
-}
-
-infix operator fun Either<*, Double>.minus(friend: Double): Either<*, Double> {
-    return this.map { it - friend }
-}
-
-infix operator fun Either<*, Double>.times(friend: Double): Either<*, Double> {
-    return this.map { it * friend }
-}
-
-infix operator fun Either<*, Double>.div(friend: Double): Either<*, Double> {
-    return this.map { it / friend }
-}
-
-/** # List **/
+/** # Alter Value **/
+/** ## List **/
 /**
  * The alt map, operates directly with the item inside the list, inside the monad.
  * It transforms your Monad<List<A>> into Monad<List<B>>.
@@ -88,7 +33,7 @@ infix operator fun <A, X> Either<X, List<A>>.plus(friends: List<A>): Either<X, L
     }
 }
 
-/** # Transformers **/
+/** ## Transformers **/
 infix fun <A, B, X> Either<X, A>.map(transformer: (A) -> B): Either<X, B> {
     return this.map(transformer)
 }
