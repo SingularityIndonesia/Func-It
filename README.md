@@ -118,7 +118,7 @@ You can alter list inside monad. You can do many things, such appending to list,
 ```kotlin
 val a = (1..5).toList().some()
 val b = a + 6 // result = Some([1,2,3,4,5,6])
-1 * 2
+
 val c = a[0] // result = Some(1)
 val d = a[10] // result = None
 ```
