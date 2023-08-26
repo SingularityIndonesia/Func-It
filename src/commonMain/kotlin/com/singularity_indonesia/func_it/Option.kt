@@ -50,3 +50,17 @@ infix fun <A, B> Option<A>.flatMap(transformer: (some: A) -> Option<B>): Option<
 
 infix fun <A> Option<A>.getOrElse(some: A): A =
     getOrElse { some }
+
+/** ## Escaper **/
+infix fun <A> Option<A>.orElse(some: A): A =
+    getOrElse { some }
+
+infix fun <A> Option<A>.orElse(some: Option<A>): Option<A> =
+    fold(
+        ifSome = {
+            it.some()
+        },
+        ifEmpty = {
+            some
+        }
+    )

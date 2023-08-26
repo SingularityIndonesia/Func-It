@@ -3,9 +3,14 @@ package com.singularity_indonesia.func_it
 import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
-import com.singularity_indonesia.func_it.map
+import com.singularity_indonesia.func_it.Result
+import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
+import kotlin.test.fail
 
 /**
  * Created by: stefanus
@@ -16,16 +21,59 @@ import kotlin.test.assertTrue
 class EitherTest {
 
     @Test
-    fun just_test() {
-        val a: Either<String, Int> = 1.right()
-        val b = a.flatMap { "asndaln $it".right() }
+    fun `test or immediate return`() {
+        val a: Either<String, Int> = "error".left()
+        val b = a orElse return
 
-        println(b)
+        fail("this line should not be executed")
+    }
 
-        val c: Either<String, Int> = "error".left()
-        val d = c.flatMap { "asndaln $it".right() }
+    @Test
+    fun `test or alternative`() {
+        val a: Either<String, Int> = "error".left()
+        val b = (a orElse 5) * 2
 
-        println(d)
+        assertTrue { b == 10 }
+    }
+
+    @Test
+    fun `test or right`() {
+        val a: Either<String, Int> = 2.right()
+        val b = (a orElse 5) * 3 // should return 6
+
+        assertEquals(6, b)
+    }
+
+    @Test
+    fun `test or suspend`() {
+
+        data class User(
+            val name: String
+        )
+
+        // get user from db return error
+        val getUserFromDB: suspend () -> Result<User> =
+            { "error".left() }
+
+        // get user from internet return User
+        val getUserFromInternet: suspend () -> Result<User> =
+            {
+                User(
+                    name = "from internet"
+                ).right()
+            }
+
+        // try to get user from db, should return left
+        val a = runBlocking {
+            getUserFromDB()
+        }
+        assertTrue { a is Either.Left }
+
+        // try to get user from db or from internet
+        val b = runBlocking {
+            (a orElse getUserFromInternet.invoke()) orElse User("from b")
+        }
+        assertTrue { b.name == "from internet" }
     }
 
     @Test
