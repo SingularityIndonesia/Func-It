@@ -19,7 +19,7 @@ allprojects {
 }
 
 dependencies {
-    implementation 'com.github.SingularityIndonesia:Func-It:1.0.0-alpha1-20230826-01'
+    implementation 'com.github.SingularityIndonesia:Func-It:1.0.0-alpha1-20230826-02'
 }
 ```
 
