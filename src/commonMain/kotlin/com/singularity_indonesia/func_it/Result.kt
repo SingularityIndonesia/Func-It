@@ -13,9 +13,6 @@ typealias Result<T> = Either<String, T>
 
 /** # Transformer **/
 /** Either to result **/
-fun <A> toResult(either: Either<String, A>): Result<A> {
-    return either
-}
 
 fun <A, X> toResult(either: Either<X, A>): Result<A> {
     return either.mapLeft {
