@@ -26,10 +26,11 @@ dependencies {
 
 ### 1. Alters
 
-The alters are bunch of infix functions that can operate with the value within the standard monads, such: Options, Either etc.
+The alters are bunch of infix functions that can operate with the value within the standard monads, such: Options,
+Either etc.
 
 <details>
-  <summary>Click to see example</summary>
+  <summary>Click to see more</summary>
 
 ```kotlin
 val a = none<Int>()
@@ -41,11 +42,7 @@ val a: Either<ErrorMessage, Int> = 1.right()
 val b = a + 2 + 3 + 4
 ```
 
-</details>
-
-Working with monad of list is always awful, so i present monad's list alters with ``altMap``. 
-<details>
-  <summary>Click to see example</summary>
+Working with monad of list is always awful, so i present monad's list alters with ``altMap``.
 
 ```kotlin
 
@@ -68,7 +65,7 @@ val b = a altMap stepOne altMap stepTwo // return Some<List<String>> of ["1 step
 The purpose of transformers is to transform one object to another.
 
 <details>
-  <summary>Click to see example</summary>
+  <summary>Click to see more</summary>
 
 ```kotlin
 val stringToInt: (String) -> Option<Int> = { inp ->
@@ -93,20 +90,18 @@ val c = a let stepOne let stepTwo let stepThree let ...
 
 This is very useful infix to immediately escape from error in standard monads.
 
-Escaping from left:
+*Note: Just remember that escaper is not associative.*
 <details>
-  <summary>Click to see example</summary>
+  <summary>Click to see more</summary>
+
+Escaping from left:
 
 ```kotlin
 val a: Either<String, Int> = "error".left()
 val b = a orElse 5
 ```
 
-</details>
-
 Escaping to another monad
-<details>
-  <summary>Click to see example</summary>
 
 ```kotlin
 // get user from db return error
@@ -126,15 +121,13 @@ val b = (a orElse getUserFromInternet.invoke()) orElse User("dummy")
 
 </details>
 
-*Note: Just remember that escaper is not associative.*
-
 ### 4. Infix
 
 Many useful infix functions in it.
 
-You can alter list inside monad. You can do many things, such appending to list, get elem by index. etc.
 <details>
-  <summary>Click to see example</summary>
+  <summary>Click to see more</summary>
+You can alter list inside monad. You can do many things, such appending to list, get elem by index. etc.
 
 ```kotlin
 val a = (1..5).toList().some()
