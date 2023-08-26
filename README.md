@@ -6,7 +6,6 @@ This library is multiplatform purposes.
 
 It works with standard library such scope functions, standard monads, etc.
 This library won't add any new things to learn, just basic things with extra and easier accessibilities.
-Ex: infix functions, alters, transformers.
 
 ## Implementation
 
@@ -27,8 +26,7 @@ dependencies {
 
 ### 1. Alters
 
-The alters are bunch of infix functions that can operate with the value within the standard monads, such: Options,
-Either etc.
+The alters are bunch of infix functions that can operate with the value within the standard monads, such: Options, Either etc.
 
 <details>
   <summary>Click to see example</summary>
@@ -45,7 +43,7 @@ val b = a + 2 + 3 + 4
 
 </details>
 
-Working with monad of list is always awful, so i present monad's list alters with ``altMap``. Ex:
+Working with monad of list is always awful, so i present monad's list alters with ``altMap``. 
 <details>
   <summary>Click to see example</summary>
 
@@ -67,7 +65,7 @@ val b = a altMap stepOne altMap stepTwo // return Some<List<String>> of ["1 step
 
 ### 2. Transformers
 
-The purpose of transformers is to transform one object to another. Ex:
+The purpose of transformers is to transform one object to another.
 
 <details>
   <summary>Click to see example</summary>
@@ -132,7 +130,7 @@ val b = (a orElse getUserFromInternet.invoke()) orElse User("dummy")
 
 ### 4. Infix
 
-Many useful infix functions in it. Ex:
+Many useful infix functions in it.
 
 You can alter list inside monad. You can do many things, such appending to list, get elem by index. etc.
 <details>
