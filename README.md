@@ -29,7 +29,9 @@ dependencies {
 
 The alters are bunch of infix functions that can operate with the value within the standard monads, such: Options,
 Either etc.
-Ex:
+
+<details>
+  <summary>Click to see example</summary>
 
 ```kotlin
 val a = none<Int>()
@@ -41,7 +43,11 @@ val a: Either<ErrorMessage, Int> = 1.right()
 val b = a + 2 + 3 + 4
 ```
 
+</details>
+
 Working with monad of list is always awful, so i present monad's list alters with ``altMap``. Ex:
+<details>
+  <summary>Click to see example</summary>
 
 ```kotlin
 
@@ -57,9 +63,14 @@ val a = (1, 2, 3).toList().some()
 val b = a altMap stepOne altMap stepTwo // return Some<List<String>> of ["1 step1 step2", "2 step1 step2", .. ]
 ```
 
+</details>
+
 ### 2. Transformers
 
 The purpose of transformers is to transform one object to another. Ex:
+
+<details>
+  <summary>Click to see example</summary>
 
 ```kotlin
 val stringToInt: (String) -> Option<Int> = { inp ->
@@ -78,18 +89,26 @@ val b = a let stringToInt // result is none
 val c = a let stepOne let stepTwo let stepThree let ...
 ```
 
+</details>
+
 ### 3. Escaper
 
 This is very useful infix to immediately escape from error in standard monads.
 
 Escaping from left:
+<details>
+  <summary>Click to see example</summary>
 
 ```kotlin
 val a: Either<String, Int> = "error".left()
 val b = a orElse 5
 ```
 
+</details>
+
 Escaping to another monad
+<details>
+  <summary>Click to see example</summary>
 
 ```kotlin
 // get user from db return error
@@ -107,6 +126,8 @@ val b = (a orElse getUserFromInternet.invoke()) orElse User("dummy")
 // the result in 'b' will be User object from internet.
 ```
 
+</details>
+
 *Note: Just remember that escaper is not associative.*
 
 ### 4. Infix
@@ -114,6 +135,8 @@ val b = (a orElse getUserFromInternet.invoke()) orElse User("dummy")
 Many useful infix functions in it. Ex:
 
 You can alter list inside monad. You can do many things, such appending to list, get elem by index. etc.
+<details>
+  <summary>Click to see example</summary>
 
 ```kotlin
 val a = (1..5).toList().some()
@@ -122,6 +145,8 @@ val b = a + 6 // result = Some([1,2,3,4,5,6])
 val c = a[0] // result = Some(1)
 val d = a[10] // result = None
 ```
+
+</details>
 
 ### 5. Extra standard monad
 
