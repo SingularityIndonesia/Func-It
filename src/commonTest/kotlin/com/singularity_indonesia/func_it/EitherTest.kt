@@ -3,12 +3,9 @@ package com.singularity_indonesia.func_it
 import arrow.core.Either
 import arrow.core.left
 import arrow.core.right
-import com.singularity_indonesia.func_it.Result
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
@@ -52,11 +49,11 @@ class EitherTest {
         )
 
         // get user from db return error
-        val getUserFromDB: suspend () -> Result<User> =
+        val getUserFromDB: suspend () -> Either<String, User> =
             { "error".left() }
 
         // get user from internet return User
-        val getUserFromInternet: suspend () -> Result<User> =
+        val getUserFromInternet: suspend () -> Either<String, User> =
             {
                 User(
                     name = "from internet"
