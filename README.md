@@ -17,7 +17,7 @@ allprojects {
 }
 
 dependencies {
-  implementation 'com.github.SingularityIndonesia:Func-It:1.0.0-alpha1-20230825-03'
+  implementation 'com.github.SingularityIndonesia:Func-It:1.0.0-alpha1-20230825-04'
 }
 ```
 
@@ -73,16 +73,17 @@ val c = a let stepOne let stepTwo let stepThree let ...
 ### 3. Infix
 Many useful infix functions in it. Ex:
 
-You can alter list inside monad. You can do many things, such appending to list, get elem index. etc.
+You can alter list inside monad. You can do many things, such appending to list, get elem by index. etc.
 ```kotlin
 val a = (1..5).toList().some()
 val b = a + 6 // result = Some([1,2,3,4,5,6])
 
 val c = a[0] // result = Some(1)
+val d = a[10] // result = None
 ```
 
 ### 4. Extra standard monad
-I Introduce the ``Result<A>`` monad as type alas for ``Either<String,A>``
+I Introduce the ``Result<A>`` monad as type alias for ``Either<String,A>``
 
 # Many More Coming
 If you have some cool idea that I could put in it, please tell me, I would love to.
