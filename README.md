@@ -78,7 +78,7 @@ val b = a let stringToInt // result is none
 val c = a let stepOne let stepTwo let stepThree let ...
 ```
 
-### 4. Escaper
+### 3. Escaper
 
 This is very useful infix to immediately escape from error in standard monads.
 
@@ -109,7 +109,7 @@ val b = (a orElse getUserFromInternet.invoke()) orElse User("dummy")
 
 *Note: Just remember that escaper is not associative.*
 
-### 3. Infix
+### 4. Infix
 
 Many useful infix functions in it. Ex:
 
@@ -123,7 +123,7 @@ val c = a[0] // result = Some(1)
 val d = a[10] // result = None
 ```
 
-### 4. Extra standard monad
+### 5. Extra standard monad
 
 I Introduce the ``Result<A>`` monad as type alias for ``Either<String,A>``
 
