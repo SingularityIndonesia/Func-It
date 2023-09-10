@@ -139,6 +139,44 @@ val d = a[10] // result = None
 
 </details>
 
+### 5. Composer
+
+Compose functions like butter.
+
+<details>
+  <summary>Click to see more</summary>
+I introduce you the composer infix ``o``. You can use pure math composition style to compose your functions.
+
+```kotlin
+fun f(x: Double): Double {
+    // Define the implementation of f
+    return x + 1
+}
+
+fun g(x: Double): Double {
+    // Define the implementation of g
+    return x * 2
+}
+
+fun h(x: Double): Double {
+    // Define the implementation of h
+    return x - 3
+}
+
+@Test
+fun testComposition() {
+    val x = 10.0
+
+    // Compose the functions and apply them to x
+    val result = ::f o ::g o ::h o x
+
+    // result ((10 - 3) * 2) + 1
+    assertEquals(15.0, result)
+}
+```
+
+</details>
+
 # Many More Coming
 If you have some cool idea that I could put in it, please tell me, I would love to.
 
