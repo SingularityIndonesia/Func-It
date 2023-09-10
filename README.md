@@ -18,7 +18,7 @@ allprojects {
 }
 
 dependencies {
-    implementation 'com.github.SingularityIndonesia:Func-It:1.0.0-alpha1-20230826-02'
+    implementation 'com.github.SingularityIndonesia:Func-It:1.0.0-alpha1-20230826-03'
 }
 ```
 
@@ -139,10 +139,10 @@ val d = a[10] // result = None
 
 </details>
 
-### 5. Extra standard monad
-
-I Introduce the ``Result<A>`` monad as type alias for ``Either<String,A>``
-
 # Many More Coming
-
 If you have some cool idea that I could put in it, please tell me, I would love to.
+
+# Currently Powered by Singularity
+<p float="left">
+<img src="https://github.com/SingularityIndonesia/AndroidCodebase/blob/docs/image/FineBlend.png" width="64" alt="5T Salesman Tracker">
+</p>
