@@ -59,13 +59,11 @@ class CompositionTest {
             )
         }
 
-    fun getUserProfileDisplay(token: Token) = ::displayableUserProfileOf o ::userProfileOf o ::userIDOf o token
-
     @Test
-    fun testComposeUserDiplayableFromToken() {
+    fun testComposeUserDisplayableFromToken() {
         val userToken: Token = Token("some Token")
 
-        val displayableUserProfile = ::getUserProfileDisplay o userToken
+        val displayableUserProfile = ::displayableUserProfileOf o ::userProfileOf o ::userIDOf o userToken
 
         assert(displayableUserProfile.isSome())
     }

@@ -148,30 +148,61 @@ Compose functions like butter.
 I introduce you the composer infix ``o``. You can use pure math composition style to compose your functions.
 
 ```kotlin
-fun f(x: Double): Double {
-    // Define the implementation of f
-    return x + 1
-}
+@JvmInline
+value class Token(val value: String)
 
-fun g(x: Double): Double {
-    // Define the implementation of g
-    return x * 2
-}
+@JvmInline
+value class UserID(val value: String)
 
-fun h(x: Double): Double {
-    // Define the implementation of h
-    return x - 3
-}
+@JvmInline
+value class UserName(val value: String)
+
+@JvmInline
+value class Email(val value: String)
+
+data class UserProfile(
+    val id: UserID,
+    val name: UserName,
+    val email: Email
+)
+
+data class UserProfileDisplayable(
+    val userProfile: UserProfile,
+    val enabled: Boolean,
+    val selected: Boolean
+)
+
+fun userIDOf(token: Token) =
+    UserID(
+        "Some ID"
+    ).some()
+
+
+fun userProfileOf(userID: Option<UserID>) =
+    userID.map {
+        UserProfile(
+            id = it,
+            name = UserName("Some Name"),
+            email = Email("Some Email")
+        )
+    }
+
+fun displayableUserProfileOf(userProfile: Option<UserProfile>) =
+    userProfile.map {
+        UserProfileDisplayable(
+            userProfile = it,
+            enabled = true,
+            selected = false
+        )
+    }
 
 @Test
-fun testComposition() {
-    val x = 10.0
+fun testComposeUserDisplayableFromToken() {
+    val userToken: Token = Token("some Token")
 
-    // Compose the functions and apply them to x
-    val result = ::f o ::g o ::h o x
+    val displayableUserProfile = ::displayableUserProfileOf o ::userProfileOf o ::userIDOf o userToken
 
-    // result ((10 - 3) * 2) + 1
-    assertEquals(15.0, result)
+    assert(displayableUserProfile.isSome())
 }
 ```
 
