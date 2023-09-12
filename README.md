@@ -18,7 +18,7 @@ allprojects {
 }
 
 dependencies {
-    implementation 'com.github.SingularityIndonesia:Func-It:1.0.0-alpha1-20230826-03'
+    implementation 'com.github.SingularityIndonesia:Func-It:1.0.0-alpha1-20230910'
 }
 ```
 
@@ -135,6 +135,44 @@ val b = a + 6 // result = Some([1,2,3,4,5,6])
 
 val c = a[0] // result = Some(1)
 val d = a[10] // result = None
+```
+
+</details>
+
+### 5. Composer
+
+Compose functions like butter.
+
+<details>
+  <summary>Click to see more</summary>
+I introduce you the composer infix ``o``. You can use pure math composition style to compose your functions.
+
+```kotlin
+fun f(x: Double): Double {
+    // Define the implementation of f
+    return x + 1
+}
+
+fun g(x: Double): Double {
+    // Define the implementation of g
+    return x * 2
+}
+
+fun h(x: Double): Double {
+    // Define the implementation of h
+    return x - 3
+}
+
+@Test
+fun testComposition() {
+    val x = 10.0
+
+    // Compose the functions and apply them to x
+    val result = ::f o ::g o ::h o x
+
+    // result ((10 - 3) * 2) + 1
+    assertEquals(15.0, result)
+}
 ```
 
 </details>
